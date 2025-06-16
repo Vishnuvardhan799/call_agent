@@ -1,0 +1,14 @@
+# livekit
+livekit
+livekit.agents
+livekit-api
+livekit-agents[openai, silero, elevenlabs]==1.0.11
+
+# openai
+livekit.plugins.openai
+openai
+
+# utilities
+python-dotenv
+twilio
+silero-vad

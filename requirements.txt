@@ -1,0 +1,14 @@
+# livekit
+livekit
+livekit.agents
+livekit-api
+livekit-agents>=1.1.1
+
+# openai
+livekit.plugins.openai
+openai
+
+# utilities
+python-dotenv
+twilio
+silero-vad
