@@ -2,13 +2,16 @@
 livekit
 livekit.agents
 livekit-api
-livekit-agents>=1.1.1
+livekit-agents[google, silero, deepgram]
 
 # openai
-livekit.plugins.openai
-openai
+livekit.plugins.google
+google
 
 # utilities
 python-dotenv
 twilio
 silero-vad
+pymongo
+
+# If any deepgram errors then use this commaand """pip install -U livekit-agents livekit-plugins-deepgram"""
