@@ -13,5 +13,7 @@ python-dotenv
 twilio
 silero-vad
 pymongo
+sentence-transformers
+tqdm
 
 # If any deepgram errors then use this commaand """pip install -U livekit-agents livekit-plugins-deepgram"""

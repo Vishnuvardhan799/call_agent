@@ -10,6 +10,7 @@ from livekit.plugins import google, silero, deepgram
 from dotenv import load_dotenv
 from prompts import AGENT_INSTRUCTION, SESSION_INSTRUCTION
 from db import DatabaseDriver
+from kb import get_kb_answer
 from typing import List, Dict, Any
 
 load_dotenv()
@@ -18,7 +19,7 @@ db_driver = DatabaseDriver()
 
 class OrderAgent(Agent):
     def __init__(self):
-        super().__init__(instructions=AGENT_INSTRUCTION)
+        super().__init__(instructions=f"{AGENT_INSTRUCTION}\n{SESSION_INSTRUCTION}")
 
     @function_tool()
     async def create_order(self, context: RunContext, name: str, phone: str, address: str, items: List[Dict[str, Any]]):
@@ -37,6 +38,13 @@ class OrderAgent(Agent):
         db_driver.create_order(name=name, phone=phone, address=address, items=items)
         return "Order has been successfully created in the database."
 
+    @function_tool()
+    async def answer_question_from_kb(self, query: str):
+        """
+        Use this tool to answer customer questions about the restaurant.
+        The query should be a question about the restaurant, its menu, policies, or other information.
+        """
+        return get_kb_answer(query)
 # Initialize the logger for the agent
 log = logging.getLogger("voice_agent")
 log.setLevel(logging.INFO)
